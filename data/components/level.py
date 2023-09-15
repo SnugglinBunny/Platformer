@@ -1,5 +1,5 @@
 import pygame
-from settings import TILE_SIZE, SCREEN_WIDTH
+from settings import TILE_SIZE, SCREEN_WIDTH, PLAYER_SPEED
 from .tiles import Tile
 from .player import Player
 
@@ -36,14 +36,14 @@ class Level:
         player_dir_x = player.direction.x
 
         if player_x <= SCREEN_WIDTH / 4 and player_dir_x < 0:
-            self.world_shift = 8
+            self.world_shift = PLAYER_SPEED
             player.speed = 0
         elif player_x >= SCREEN_WIDTH / 2 and player_dir_x > 0:
-            self.world_shift = -8
+            self.world_shift = -PLAYER_SPEED
             player.speed = 0
         else:
             self.world_shift = 0
-            player.speed = 8
+            player.speed = PLAYER_SPEED
 
     def run(self):
         # Level tiles
